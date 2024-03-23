@@ -8,11 +8,10 @@ import 'swiper/swiper-bundle.css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { Grid } from "../../components/grid/grid"
 
 import "./portfolio.scss"
 
-const allCategory = ["Fur Babies", "Portraits"]
+const allCategory = ["Family & Lifestyle", "Pets", "Events"]
 export const Portfolio = () => {
   const [list, setLists] = useState([])
   const [category, setCategory] = useState(allCategory)
@@ -31,85 +30,85 @@ export const Portfolio = () => {
     const fetchedData = [
       {
         cover: "/img/portfolio/pets/1.jpg",
-        category: "Fur Babies",
+        category: "Pets",
         title: "Title 1",
         name: "Name 1",
       },
       {
         cover: "/img/portfolio/pets/2.jpg",
-        category: "Fur Babies",
+        category: "Pets",
         title: "Title 1",
         name: "Name 1",
       },
       {
         cover: "/img/portfolio/pets/3.jpg",
-        category: "Fur Babies",
+        category: "Pets",
         title: "Title 1",
         name: "Name 1",
       },
       {
         cover: "/img/portfolio/pets/4.jpg",
-        category: "Fur Babies",
+        category: "Family & Lifestyle",
         title: "Title 1",
         name: "Name 1",
       },
       {
         cover: "/img/portfolio/pets/5.jpg",
-        category: "Fur Babies",
+        category: "Family & Lifestyle",
         title: "Title 1",
         name: "Name 1",
       },
       {
         cover: "/img/portfolio/pets/6.jpg",
-        category: "Fur Babies",
+        category: "Family & Lifestyle",
         title: "Title 1",
         name: "Name 1",
       },
       {
         cover: "/img/portfolio/pets/7.jpg",
-        category: "Fur Babies",
+        category: "Family & Lifestyle",
         title: "Title 1",
         name: "Name 1",
       },
       {
         cover: "/img/portfolio/portraits/1.jpg",
-        category: "Portraits",
+        category: "Events",
         title: "Title 2",
         name: "Name 2",
       },
       {
         cover: "/img/portfolio/portraits/2.jpg",
-        category: "Portraits",
+        category: "Events",
         title: "Title 2",
         name: "Name 2",
       },
       {
         cover: "/img/portfolio/portraits/3.jpg",
-        category: "Portraits",
+        category: "Events",
         title: "Title 2",
         name: "Name 2",
       },
       {
         cover: "/img/portfolio/portraits/4.jpg",
-        category: "Portraits",
+        category: "Events",
         title: "Title 2",
         name: "Name 2",
       },
       {
         cover: "/img/portfolio/portraits/5.jpg",
-        category: "Portraits",
+        category: "Events",
         title: "Title 2",
         name: "Name 2",
       },
       {
         cover: "/img/portfolio/portraits/6.jpg",
-        category: "Portraits",
+        category: "Events",
         title: "Title 2",
         name: "Name 2",
       },
       {
         cover: "/img/portfolio/portraits/7.jpg",
-        category: "Portraits",
+        category: "Events",
         title: "Title 2",
         name: "Name 2",
       },
@@ -146,21 +145,37 @@ export const Portfolio = () => {
           </button>
         ))}
       </div>
+      <Swiper
+                effect={'coverflow'}
+                grabCursor={true}
+                centeredSlides={true}
+                loop={true}
+                slidesPerView={'auto'}
+                coverflowEffect={{
+                  rotate: 0,
+                  stretch: 0,
+                  depth: 100,
+                  modifier: 2.5,
+                }}
 
-      <div className="App">
-        <Grid
-          images={images}
-          mode="auto"
-          width="100%"
-          height="100%"
-          gridLayout={"vertical"}
-          submit={(images) => {}}
-        />
+            >
+                {list.map((item) => (
+                    <SwiperSlide>
+                      <img src={item.cover} alt="slide_image" />
+                    </SwiperSlide>
+                ))}
+          </Swiper>
       </div>
-    </div>
   )
 }
-
+// <Grid
+        //   images={images}
+        //   mode="auto"
+        //   width="100%"
+        //   height="100%"
+        //   gridLayout={"vertical"}
+        //   submit={(images) => {}}
+        //>
 // pagination={{ el: '.swiper-pagination', clickable: true }}
 //                 navigation={{
 //                 nextEl: '.swiper-button-next',

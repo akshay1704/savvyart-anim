@@ -49,7 +49,7 @@ const Parallax = ({ type }) => {
       }}
     >
       <motion.h1 style={{ y: yText }} variants={variants}>
-        {"What I Do?"}
+        {"Welcome to my Photography Page ! "}
       </motion.h1>
       <motion.div className="park" variants={variants}></motion.div>
       <motion.div

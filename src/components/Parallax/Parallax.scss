@@ -9,9 +9,18 @@
   justify-content: center;
   overflow: hidden;
 
+  .nova-mono-regular {
+    font-family: "Nova Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+  }
+
   h1 {
     font-size: 60px;
     z-index: 4;
+    font-family: "Nova Mono", monospace;
+    padding-left: 50px;
+    padding-right: 100px;
     @include mobile {
       font-size: 30px;
       text-align: center;

@@ -1,6 +1,7 @@
 import React, { useState , useEffect} from "react"
 import { Heading } from "../../Common/Heading"
-
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
@@ -16,17 +17,39 @@ export const Portfolio = () => {
   const [list, setLists] = useState([])
   const [category, setCategory] = useState(allCategory)
   const [imageDict, setImageDict] = useState({})
+  const [bottomText, setbottomText] = useState("")
+
+  const variants = {
+    initial: {
+      x: -500,
+      y: 100,
+      opacity: 0,
+    },
+    animate: {
+      x: 0,
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1,
+        staggerChildren: 0.1,
+      },
+    },
+  };
+  const bottomTextDetails = {
+    "Family & Lifestyle" : "Moments with your family are too precious to memory alone. Capture those frames to fondly look back and relive them with your loved ones.",
+    "Pets" : "Immortalize the moments with your furry friends in their comfort zone, be it your homr, a route you walk or your local park. No need for sits and stays, let them run around and play with their toys, while we capture their candid shots into long lasting frames.",
+    "Events" : "I help events",
+  }
 
   const filterItems = (selectedCategory) => {
     const newItems =
-      selectedCategory === "all" ? [] : imageDict[selectedCategory]
+      selectedCategory === "all" ? imageDict["Pets"] : imageDict[selectedCategory]
+    const selectedBottomText = selectedCategory == "all" ? "" : bottomTextDetails[selectedCategory]
+    setbottomText(selectedBottomText)
     setLists(newItems || [])
   }
 
   useEffect(() => {
-    // Fetch data or images here (e.g., from an API or static data)
-
-    // Example:
     const fetchedData = [
       {
         cover: "/img/portfolio/pets/1.jpg",
@@ -123,7 +146,7 @@ export const Portfolio = () => {
     })
 
     setImageDict(dict)
-    filterItems("Fur Babies")
+    filterItems("Pets")
   }, [])
 
   const images = Array.from({ length: 100 }, (_, i) => ({
@@ -165,6 +188,12 @@ export const Portfolio = () => {
                     </SwiperSlide>
                 ))}
           </Swiper>
+          <motion.div className="textContainer" variants={variants}>
+            <p>
+              {bottomText}
+            </p>
+            <hr />
+        </motion.div> 
       </div>
   )
 }

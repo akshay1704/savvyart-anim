@@ -1,0 +1,41 @@
+@use "../../common/styles.module.scss";
+@use "../../common/colors.module.scss";
+
+$warning: colors.$amber;
+
+.image {
+  @extend %center;
+
+  max-width: 90%;
+  max-height: 90%;
+  transition: visibility 0s, opacity 0.25s linear, clip-path 0.25s linear;
+  cursor: pointer;
+}
+
+.wrapper {
+  @extend %center;
+
+  width: 100%;
+  height: 100%;
+}
+
+.visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: $warning;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}

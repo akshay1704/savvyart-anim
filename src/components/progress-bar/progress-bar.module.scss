@@ -1,0 +1,18 @@
+$primary: var(--rcvg-primary-color);
+$bg-color: var(--rcvg-bg-color);
+
+.container {
+  height: 4px;
+  background: rgba($color: $bg-color, $alpha: 85%);
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+
+.progress_bar {
+  display: block;
+  transition: 0.25s width ease-in-out;
+  width: var(--rc-images-width);
+  background-color: $primary;
+  height: 100%;
+}

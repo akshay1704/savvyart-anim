@@ -1,0 +1,132 @@
+@use "../../common/styles.module.scss";
+@use "../../common/colors.module.scss";
+
+$primary: var(--rcvg-primary-color);
+$bg-color: var(--rcvg-bg-color);
+$btn-color: var(--rcvg-control-btn-color);
+$controls-bg-color: var(--rcvg-controls-bg-color);
+$controls-backdrop-color: var(--rcvg-controls-backdrop-color);
+$btn-color: var(--rcvg-control-btn-color);
+$white: colors.$white;
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 350px;
+  border-radius: 40px;
+  background: $controls-bg-color;
+  height: 50px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  &.hide {
+    visibility: hidden;
+  }
+}
+
+.control {
+  margin: 0 0.5rem;
+}
+
+.control_button {
+  @extend %center;
+
+  padding: 0;
+  border: 0;
+  font-size: 0.75rem;
+  color: $white;
+  transition: color 0.25s ease, background 0.25s ease;
+
+  &:not(.active) {
+    background: $btn-color;
+    box-shadow: inset 0 0 2px 1px rgb(0 0 0 / 10%), 0 0 2px 1px rgb(0 0 0 / 5%);
+  }
+
+  &:hover {
+    background: $primary;
+    color: $white;
+    cursor: pointer;
+    box-shadow: none;
+  }
+
+  &.rounded {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+
+  &:not(.rounded) {
+    border-radius: 4px;
+    height: 30px;
+  }
+
+  &.active {
+    background: $primary;
+    color: $white;
+  }
+
+  svg {
+    width: 70%;
+    height: 70%;
+  }
+}
+
+.controls_wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: $controls-backdrop-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  transition: opacity 0.2s ease-in-out;
+  opacity: 1;
+  visibility: visible;
+
+  &.hide {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+.button_disabled {
+  box-shadow: none;
+  background: colors.$gallery;
+  color: colors.$silver-chalice;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.resize_btn {
+  position: absolute;
+  right: 0.25rem;
+  bottom: 0.25rem;
+  background: rgba($white, 0.1);
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: $primary;
+  transform: rotate(-90deg);
+  border-radius: 4px;
+  touch-action: none;
+
+  svg {
+    width: 80%;
+    height: 80%;
+  }
+}
+
+.submit_button {
+  
+}

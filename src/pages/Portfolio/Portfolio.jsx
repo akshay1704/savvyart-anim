@@ -8,88 +8,156 @@ import 'swiper/swiper-bundle.css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import { Grid } from "../../components/grid/grid"
 
+import "./portfolio.scss"
 
-import './portfolio.scss'
-
-const allCategory = ["Fur Babies", "Portraits"];
+const allCategory = ["Fur Babies", "Portraits"]
 export const Portfolio = () => {
+  const [list, setLists] = useState([])
+  const [category, setCategory] = useState(allCategory)
+  const [imageDict, setImageDict] = useState({})
 
-    const [list, setLists] = useState([]);
-    const [category, setCategory] = useState(allCategory);
-    const [imageDict, setImageDict] = useState({});
+  const filterItems = (selectedCategory) => {
+    const newItems =
+      selectedCategory === "all" ? [] : imageDict[selectedCategory]
+    setLists(newItems || [])
+  }
 
-    const filterItems = (selectedCategory) => {
-      const newItems = selectedCategory === "all" ? [] : imageDict[selectedCategory];
-      setLists(newItems || []);
-    };
-
-    useEffect(() => {
+  useEffect(() => {
     // Fetch data or images here (e.g., from an API or static data)
 
     // Example:
     const fetchedData = [
-        { cover: "/img/portfolio/pets/1.jpg", category: "Fur Babies", title: "Title 1", name: "Name 1" },
-        { cover: "/img/portfolio/pets/2.jpg", category: "Fur Babies", title: "Title 1", name: "Name 1" },
-        { cover: "/img/portfolio/pets/3.jpg", category: "Fur Babies", title: "Title 1", name: "Name 1" },
-        { cover: "/img/portfolio/pets/4.jpg", category: "Fur Babies", title: "Title 1", name: "Name 1" },
-        { cover: "/img/portfolio/pets/5.jpg", category: "Fur Babies", title: "Title 1", name: "Name 1" },
-        { cover: "/img/portfolio/pets/6.jpg", category: "Fur Babies", title: "Title 1", name: "Name 1" },
-        { cover: "/img/portfolio/pets/7.jpg", category: "Fur Babies", title: "Title 1", name: "Name 1" },
-        { cover: "/img/portfolio/portraits/1.jpg", category: "Portraits", title: "Title 2", name: "Name 2" },
-        { cover: "/img/portfolio/portraits/2.jpg", category: "Portraits", title: "Title 2", name: "Name 2" },
-        { cover: "/img/portfolio/portraits/3.jpg", category: "Portraits", title: "Title 2", name: "Name 2" },
-        { cover: "/img/portfolio/portraits/4.jpg", category: "Portraits", title: "Title 2", name: "Name 2" },
-        { cover: "/img/portfolio/portraits/5.jpg", category: "Portraits", title: "Title 2", name: "Name 2" },
-        { cover: "/img/portfolio/portraits/6.jpg", category: "Portraits", title: "Title 2", name: "Name 2" },
-        { cover: "/img/portfolio/portraits/7.jpg", category: "Portraits", title: "Title 2", name: "Name 2" },
-        // Add more data as needed
-    ];
-    const dict = {};
+      {
+        cover: "/img/portfolio/pets/1.jpg",
+        category: "Fur Babies",
+        title: "Title 1",
+        name: "Name 1",
+      },
+      {
+        cover: "/img/portfolio/pets/2.jpg",
+        category: "Fur Babies",
+        title: "Title 1",
+        name: "Name 1",
+      },
+      {
+        cover: "/img/portfolio/pets/3.jpg",
+        category: "Fur Babies",
+        title: "Title 1",
+        name: "Name 1",
+      },
+      {
+        cover: "/img/portfolio/pets/4.jpg",
+        category: "Fur Babies",
+        title: "Title 1",
+        name: "Name 1",
+      },
+      {
+        cover: "/img/portfolio/pets/5.jpg",
+        category: "Fur Babies",
+        title: "Title 1",
+        name: "Name 1",
+      },
+      {
+        cover: "/img/portfolio/pets/6.jpg",
+        category: "Fur Babies",
+        title: "Title 1",
+        name: "Name 1",
+      },
+      {
+        cover: "/img/portfolio/pets/7.jpg",
+        category: "Fur Babies",
+        title: "Title 1",
+        name: "Name 1",
+      },
+      {
+        cover: "/img/portfolio/portraits/1.jpg",
+        category: "Portraits",
+        title: "Title 2",
+        name: "Name 2",
+      },
+      {
+        cover: "/img/portfolio/portraits/2.jpg",
+        category: "Portraits",
+        title: "Title 2",
+        name: "Name 2",
+      },
+      {
+        cover: "/img/portfolio/portraits/3.jpg",
+        category: "Portraits",
+        title: "Title 2",
+        name: "Name 2",
+      },
+      {
+        cover: "/img/portfolio/portraits/4.jpg",
+        category: "Portraits",
+        title: "Title 2",
+        name: "Name 2",
+      },
+      {
+        cover: "/img/portfolio/portraits/5.jpg",
+        category: "Portraits",
+        title: "Title 2",
+        name: "Name 2",
+      },
+      {
+        cover: "/img/portfolio/portraits/6.jpg",
+        category: "Portraits",
+        title: "Title 2",
+        name: "Name 2",
+      },
+      {
+        cover: "/img/portfolio/portraits/7.jpg",
+        category: "Portraits",
+        title: "Title 2",
+        name: "Name 2",
+      },
+      // Add more data as needed
+    ]
+    const dict = {}
     fetchedData.forEach((item) => {
-        if (!dict[item.category]) {
-        dict[item.category] = [];
-        }
-        dict[item.category].push(item);
-    });
+      if (!dict[item.category]) {
+        dict[item.category] = []
+      }
+      dict[item.category].push(item)
+    })
 
-    setImageDict(dict);
-    filterItems("Fur Babies");
-    }, []);
+    setImageDict(dict)
+    filterItems("Fur Babies")
+  }, [])
 
-
+  const images = Array.from({ length: 100 }, (_, i) => ({
+    src: `https://savyart.s3.amazonaws.com/akshay/image_${i}.jpg`,
+    alt: `Image ${i + 1}`,
+  }))
 
   return (
-        <div className='Pcontainer'>
-          <Heading title='Portfolio' />
-          <div className='catButton'>
-            {category.map((category) => (
-              <button className='PprimaryBtn' onClick={() => filterItems(category)} data-aos='zoom-out-down'>
-                {category}
-              </button>
-            ))}
-          </div>
-          <Swiper
-                effect={'coverflow'}
-                grabCursor={true}
-                centeredSlides={true}
-                loop={true}
-                slidesPerView={'auto'}
-                coverflowEffect={{
-                  rotate: 0,
-                  stretch: 0,
-                  depth: 100,
-                  modifier: 2.5,
-                }}
-                
-            >
-                {list.map((item) => (
-                    <SwiperSlide>
-                      <img src={item.cover} alt="slide_image" />
-                    </SwiperSlide>
-                ))}
-          </Swiper>
-        </div>
+    <div className="Pcontainer">
+      <Heading title="Portfolio" />
+      <div className="catButton">
+        {category.map((category) => (
+          <button
+            className="PprimaryBtn"
+            onClick={() => filterItems(category)}
+            data-aos="zoom-out-down"
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+
+      <div className="App">
+        <Grid
+          images={images}
+          mode="auto"
+          width="100%"
+          height="100%"
+          gridLayout={"vertical"}
+          submit={(images) => {}}
+        />
+      </div>
+    </div>
   )
 }
 

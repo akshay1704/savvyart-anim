@@ -187,14 +187,14 @@ export const Portfolio = () => {
                       <img src={item.cover} alt="slide_image" />
                     </SwiperSlide>
                 ))}
-          </Swiper>
-          <motion.div className="textContainer" variants={variants}>
-            <p>
-              {bottomText}
-            </p>
-            <hr />
-        </motion.div> 
-      </div>
+        </Swiper>
+        <motion.div className="textContainer" variants={variants}>
+          <p>
+            {bottomText}
+          </p>
+          <hr />
+      </motion.div> 
+    </div>
   )
 }
 // <Grid

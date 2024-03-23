@@ -16,9 +16,7 @@ const App = () => {
     <section><Parallax type = "services"/></section>
     <section><Portfolio/></section>
     <section><ClientArea/></section>
-    <section>Portfolio2</section>
     <section><ClientInfo/></section>
-    <section>Pricing</section>
     <section>About</section>
     </div>;
 };

@@ -45,7 +45,7 @@ const Parallax = ({ type }) => {
       whileInView="animate"
       style={{
         background:
-          "linear-gradient(180deg, #1ae0eb, #8ff2f7)",
+          "linear-gradient(180deg, #ffffff, #1ae0eb)",
       }}
     >
       <motion.h1 style={{ y: yText }} variants={variants}>

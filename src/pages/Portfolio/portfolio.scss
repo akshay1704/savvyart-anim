@@ -86,10 +86,17 @@
     object-fit: cover;
   }
 
+  .dancing-script-1 {
+    font-family: "Dancing Script", cursive;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+  }
+
   p {
     font-weight: 200;
     font-size: 20px;
-    font-family: sans-serif;
+    font-family: "Dancing Script", cursive;
     color: gray;
     text-align: center;
     padding-top: 20px;
@@ -97,7 +104,7 @@
 
   .textContainer {
     flex: 1;
-    align-self: flex-end;
+    align-self: flex-start;
     display: flex;
     align-items: center;
     gap: 20px;

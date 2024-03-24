@@ -1,19 +1,34 @@
 // App.js
-import React, { useState } from 'react';
+import React, { useEffect, useState } from "react"
 import { Grid } from "../../components/grid/grid"
-import './ClientArea.scss';
+import "./ClientArea.scss"
+import { useAWS } from "../../hooks/aws"
 
 function ClientArea() {
-  const [clientId, setClientId] = useState('');
-  const [submittedClientId, setSubmittedClientId] = useState('');
+  const [clientId, setClientId] = useState("")
+  const [submittedClientId, setSubmittedClientId] = useState("")
+  const [loadedImages, setLoadedImages] = useState(false)
+  const [images, setImages] = useState([])
+  const { listImages } = useAWS()
 
   const handleClientIdChange = (event) => {
-    setClientId(event.target.value);
-  };
+    setClientId(event.target.value)
+  }
 
   const handleSubmit = () => {
-    setSubmittedClientId(clientId);
-  };
+    setSubmittedClientId(clientId)
+    setImages([])
+    listImages(clientId, setImages)
+    setLoadedImages(true)
+  }
+
+  useEffect(() => {
+    console.log(images)
+  }, [images, loadedImages])
+
+  const downloadImages = (images) => {
+    //Write it here
+  }
 
   return (
     <div className="ClientArea">
@@ -26,16 +41,21 @@ function ClientArea() {
         />
         <button onClick={handleSubmit}>Submit</button>
       </div>
-      {submittedClientId && <Grid
-        images={images}
-        mode="auto"
-        width="100%"
-        height="100%"
-        gridLayout={"vertical"}
-        submit={(images) => {}}
-        clientId={submittedClientId} />}
+      {images.length > 0 && (
+        <Grid
+          gap={10}
+          gridDimensions={{ columns: 8 }}
+          gridLayout="vertical"
+          height={"80%"}
+          width={"80%"}
+          images={images}
+          mode="auto"
+          enableDarkMode={false}
+          submit={downloadImages}
+        />
+      )}
     </div>
-  );
+  )
 }
 
 export default ClientArea;

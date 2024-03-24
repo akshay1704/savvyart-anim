@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import { defaultImageSizes, GridProps } from "./grid/grid.model";
-import { Dark } from "./grid/themes";
+import { Dark, White } from "./grid/themes"
 import { ImageProps } from "./image/image.model";
 
 type ContextType = GridProps & {
@@ -27,8 +27,8 @@ export const defaultProps: ContextType = {
   mode: "auto",
   showProgressBar: true,
   submit: (images: ImageProps[]) => {},
-  theme: Dark,
+  theme: White,
   width: 1200,
-};
+}
 
 export const Context = createContext<GridProps>(defaultProps);

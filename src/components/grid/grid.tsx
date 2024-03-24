@@ -41,10 +41,12 @@ const Grid: FunctionComponent<GridProps> = (props) => {
     submit,
   } = contextProps;
 
+  
   const imagesRef = useRef(
     images.map((image) => ({ ...image, id: generateUniqueId() }))
-  );
+  )
 
+  useEffect(() => {}, [images, imagesRef])
   const [transfDimensions] = useState<{ height: number; width: number }>(() => {
     if (isStringPercent(width) && isStringPercent(height)) {
       const { innerHeight, innerWidth } = window;

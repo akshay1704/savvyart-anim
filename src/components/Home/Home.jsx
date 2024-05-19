@@ -51,7 +51,7 @@ const Home = () => {
           <motion.h1 variants={textVariants}>
             Pet Photography & Portraits
           </motion.h1>
-          <motion.h2 variants={textVariants}>OSHAWA, CA</motion.h2>
+          <motion.h2 variants={textVariants}>Durham, CA</motion.h2>
           <motion.div variants={textVariants} className="buttons">
             <motion.button variants={textVariants}>
               See the Latest Works

@@ -22,7 +22,7 @@ const Navbar = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
         >
-          Savvy Art Photography
+          EverSnap Studio
         </motion.h1>
         <div className="social">
             <a href='http://www.facebook.com' target='_blank'>

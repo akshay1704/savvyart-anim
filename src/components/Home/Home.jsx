@@ -49,7 +49,7 @@ const Home = () => {
           animate="animate"
         >
           <motion.h1 variants={textVariants}>
-            Pet Photography & Portraits
+            Pet Portraits
           </motion.h1>
           <motion.h2 variants={textVariants}>Durham, CA</motion.h2>
           <motion.div variants={textVariants} className="buttons">

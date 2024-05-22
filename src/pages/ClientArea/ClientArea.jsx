@@ -50,7 +50,7 @@ function ClientArea() {
           width={"80%"}
           images={images}
           mode="auto"
-          enableDarkMode={false}
+          enableDarkMode={true}
           submit={downloadImages}
         />
       )}

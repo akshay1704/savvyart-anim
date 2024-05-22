@@ -9,7 +9,7 @@ function ClientArea() {
   const [submittedClientId, setSubmittedClientId] = useState("")
   const [loadedImages, setLoadedImages] = useState(false)
   const [images, setImages] = useState([])
-  const { listImages } = useAWS()
+  const { listImages, sendSQSMessage } = useAWS()
 
   const handleClientIdChange = (event) => {
     setClientId(event.target.value)
@@ -27,7 +27,11 @@ function ClientArea() {
   }, [images, loadedImages])
 
   const downloadImages = (images) => {
-    //Write it here
+    const selectedImages = images.map((image) => image.name)
+    sendSQSMessage({
+      client: clientId,
+      images: selectedImages,
+    })
   }
 
   return (

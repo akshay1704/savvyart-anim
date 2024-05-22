@@ -63,7 +63,7 @@ const Home = () => {
       </div>
 
       <div className="imageContainer">
-          <img src="img/portfolio/dogs/lokinew.jpg" alt="" />
+          <img src="img/portfolio/dogs/lokiupdated.JPG" alt="" />
       </div>
     </div>
   );
